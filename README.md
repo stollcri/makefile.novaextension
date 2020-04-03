@@ -1,3 +1,3 @@
 # Nova Elixir
 
-Syntax highlighting and code completion for Makefiles in Nova.
+Syntax highlighting for Makefiles in Nova.

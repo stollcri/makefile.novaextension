@@ -2,7 +2,7 @@
     "identifier": "rustypatchedsoftware.Makefile",
     "name": "Makefile",
     "vendor": "Rusty Patched Software",
-    "description": "Syntax highlighting and code completion for Makefiles",
+    "description": "Syntax highlighting for Makefiles",
     "version": "0.1",
     "categories": ["languages"],
     "repository": "https://github.com/stollcri/makefile.novaextension",
