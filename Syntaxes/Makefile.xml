@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<syntax name="mylang">
+	<meta>
+		<name>Makefile</name>
+		<type>structured</type>
+	</meta>
+	
+	<detectors>
+		<filename priority="1.0">Makefile,makefile</filename>
+	</detectors>
+	
+	<indentation>
+		<increase>
+			<expression>^.*:$</expression>
+		</increase>
+	</indentation>
+	
+	<comments>
+		<single>
+			<expression>#</expression>
+		</single>
+	</comments>
+    
+    <brackets>
+		<pair open="(" close=")" />
+	</brackets>
+
+    <surrounding-pairs>
+        <pair open="(" close=")" />
+        <pair open="&apos;" close="&apos;" />
+        <pair open="&quot;" close="&quot;" />
+    </surrounding-pairs>
+
+	<scopes>
+		<!-- Comments -->
+		<scope name="makefile.comment.single" spell-check="true">
+			<expression>\#(.*)$</expression>
+			<capture number="1" name="makefile.comment.content" />
+		</scope>
+		
+		<!-- Identifiers -->
+		<scope name="makefile.identifier.dependant">
+			<expression>^([a-zA-Z0-9_-]*):\s(.+)$</expression>
+			<capture number="1" name="makefile.identifier.function" />
+			<capture number="2" name="makefile.identifier.dependencies" />
+		</scope>
+		<scope name="makefile.identifier.simple">
+			<expression>^([a-zA-Z0-9_-]*):$</expression>
+			<capture number="1" name="makefile.identifier.function" />
+			<capture number="2" name="makefile.identifier.dependencies" />
+		</scope>
+		
+		<!-- Values -->
+		<include syntax="self" collection="strings" />
+		<scope name="makefile.value.number">
+			<expression>\b(\-|\+)?(?:\d+(?:\.\d*)?|(?:\.\d+))\b</expression>
+		</scope>
+		<scope name="makefile.value.command">
+			<starts-with>
+				<expression>\$\(shell</expression>
+				<capture number="0" name="makefile.value.command.bracket" />
+			</starts-with>
+			<ends-with>
+				<expression>\)</expression>
+				<capture number="0" name="makefile.value.command.bracket" />
+			</ends-with>
+			<subscopes>
+				<include syntax="self" />
+			</subscopes>
+		</scope>
+		<scope name="makefile.value.variable">
+			<starts-with>
+				<expression>\$\(</expression>
+				<capture number="0" name="makefile.value.variable.bracket" />
+			</starts-with>
+			<ends-with>
+				<expression>\)</expression>
+				<capture number="0" name="makefile.value.variable.bracket" />
+			</ends-with>
+			<subscopes>
+				<include syntax="self" />
+			</subscopes>
+		</scope>
+	</scopes>
+	
+	<collections>
+		<!-- Strings -->
+		<collection name="strings">
+			<scope name="makefile.string.double-quoted">
+				<expression>&quot;(?:[^&quot;\\]|\\.)*(?:&quot;|$)</expression>
+			</scope>
+			<scope name="makefile.string.single-quoted">
+				<expression>&apos;(?:[^&apos;\\]|\\.)*(?:&apos;|$)</expression>
+			</scope>
+		</collection>
+	</collections>
+
+</syntax>
