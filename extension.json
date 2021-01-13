@@ -1,9 +1,11 @@
 {
     "identifier": "rustypatchedsoftware.Makefile",
     "name": "Makefile",
-    "vendor": "Rusty Patched Software",
+    "author": "Rusty Patched Software",
+    
+    "organization": "Rusty Patched Software",
     "description": "Syntax highlighting for Makefiles",
-    "version": "0.1",
+    "version": "0.2",
     "categories": ["languages"],
     "repository": "https://github.com/stollcri/makefile.novaextension",
     "license": "MIT",

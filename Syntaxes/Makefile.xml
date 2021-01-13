@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<syntax name="mylang">
+<syntax name="makefile">
 	<meta>
 		<name>Makefile</name>
 		<type>structured</type>
@@ -47,7 +47,6 @@
 		<scope name="makefile.identifier.simple">
 			<expression>^([a-zA-Z0-9_-]*):$</expression>
 			<capture number="1" name="makefile.identifier.function" />
-			<capture number="2" name="makefile.identifier.dependencies" />
 		</scope>
 		
 		<!-- Values -->
